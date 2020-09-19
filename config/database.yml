@@ -33,7 +33,7 @@ test:
   <<: *defaults_mysql
   host: "127.0.0.1"
   port: 13306
-  database: rails_bookworm_paradise_test
+  database: bookworm_paradise_test
   password: bookworm_paradise_password
 
 # As with config/credentials.yml, you never want to store sensitive information,
