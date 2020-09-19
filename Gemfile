@@ -31,7 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot", "~> 6.1"
   gem "rspec-rails", "~> 4.0"
+  gem "ruby_jard", "~> 0.3.0"
 end
 
 group :development do
@@ -49,4 +51,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "haml", "~> 5.1"
 
 gem "haml-rails", "~> 2.0"
+
 
