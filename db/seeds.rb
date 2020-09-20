@@ -1009,6 +1009,27 @@
 #   },
 # ].each { |book_data| Book.create book_data }
 
+authors = [
+  { "first_name": "Jane", "last_name": "Austen", slug: "", pen_name: nil },
+  { "first_name": "Leo", "last_name": "Tolstoy", slug: "", pen_name: nil },
+  { "first_name": "Leo", "last_name": "Tolstoy", slug: "", pen_name: nil },
+  { "first_name": "Virginia", "last_name": "Woolf", slug: "", pen_name: nil },
+  { "first_name": "Michael", "last_name": "Cunnningham", slug: "", pen_name: nil },
+  { "first_name": "Mark", "last_name": "Twain", slug: "", pen_name: nil },
+  { "first_name": "Charles", "last_name": "Dickens", slug: "", pen_name: nil },
+  { "first_name": "Mark", "last_name": "Twain", slug: "", pen_name: nil },
+  { "first_name": "Virginia", "last_name": "Woolf", slug: "", pen_name: nil },
+  { "first_name": "J.K.", "last_name": "Rowling", slug: "", pen_name: nil },
+  { "first_name": "Gabriel", "last_name": "García Márquez", slug: "", pen_name: nil },
+  { "first_name": "William", "last_name": "Shakespeare", slug: "", pen_name: nil },
+  { "first_name": "J.R.", "last_name": "Tolkien", slug: "", pen_name: nil },
+].each do |author_data|
+  author_data['slug'] = author_data.values_at(:last_name, :first_name)
+                                    .map { |s| s.delete(".-").strip.downcase }
+                                    .join "-"
+  Author.create_or_find_by author_data
+end
+
 books = [
   { "title": "Northanger Abbey", "author": "Austen, Jane", "year": 1814, "pages": 0, "language": "English", "country": "United Kingdom", "link": "https://en.wikipedia.org/wiki/Northanger_Abbey" },
   { "title": "War and Peace", "author": "Tolstoy, Leo", "year": 1865, "pages": 1225, "language": "Russian/French", "country": "Russia", "link": "https://en.wikipedia.org/wiki/War_and_Peace" },
