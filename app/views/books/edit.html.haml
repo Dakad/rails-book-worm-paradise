@@ -1,0 +1,25 @@
+= link_to "< Go to Books", books_path
+%br/
+%h1 Edit book
+
+= form_with model: @book do |f|
+  %p
+    = f.label :title, "Book title"
+    = f.text_field :title, focus: true
+  %p
+    = f.label :language
+    = f.text_field :language
+  %p
+    = f.label :country
+    = f.text_field :country
+  %p
+    = f.label :link
+    = f.url_field :link
+  %p
+    = f.label :year, "Published year"
+    = f.number_field :year, min: 1200, max: DateTime.now.year + 1
+  %p
+    = f.label :pages
+    = f.number_field :pages, min: 0
+
+  = f.submit

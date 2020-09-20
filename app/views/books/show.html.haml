@@ -1,0 +1,8 @@
+= link_to "< Go to Books", books_path
+%br/
+%h2= @book.title
+%h3 By #{@book.author}
+%p
+  = link_to "Edit", edit_book_path(@book.id)
+
+
