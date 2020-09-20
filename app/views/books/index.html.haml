@@ -5,8 +5,10 @@
   %h2= "#" + book.id.to_s + " - " + book.title
   %h3 By #{book.author}
   %p
-    = link_to "View ##{book.id} | ", book_path(book.id)
-    = link_to "Edit ##{book.id} | ", edit_book_path(book.id)
+    = link_to "View ##{book.id}", book_path(book.id)
+    \|
+    = link_to "Edit ##{book.id}", edit_book_path(book.id)
+    \|
     = link_to "Delete ##{book.id}", book_path(book.id), data: {method: "DELETE", confirm: "This action will delete the book info. Are you sure ?!"}
   %hr
 
