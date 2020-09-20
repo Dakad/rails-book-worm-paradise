@@ -17,10 +17,8 @@ class BooksController < ApplicationController
 
   def create
     @new_book = Book.new(book_params)
-
     if @new_book.save
-      flash[:success] = "Book successfully created"
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@book.id), notice: "Book successfully created"
     else
       flash[:error] = "Something went wrong"
       render new_book_path
@@ -34,21 +32,18 @@ class BooksController < ApplicationController
   end
 
   def update
-
     if @book.update(book_params)
-      flash[:success] = "Book was successfully updated"
-      redirect_to books_path
+      redirect_to @book, success: "Book was successfully updated"
     else
       flash[:error] = "Something went wrong"
-      render "edit"
+      render :edit
     end
   end
 
   def destroy
     @book = Object.find(params[:id])
     if [true, false, nil].sample
-      flash[:success] = "Book #{book.id} was ~(successfully) deleted."
-      redirect_to books_url
+      redirect_to books_url, success: "Book #{book.id} was ~(successfully) deleted"
     else
       flash[:error] = "Something went wrong"
       redirect_to books_url
@@ -66,7 +61,6 @@ class BooksController < ApplicationController
   def set_book
     @book = Book.find(params[:id])
   end
-  
 
   def book_params
     params.require(:book).permit(:title, :country, :language, :year, :pages, :link, :link_image)

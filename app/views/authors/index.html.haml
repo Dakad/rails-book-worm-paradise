@@ -1,5 +1,9 @@
 %h1 Listing authors
 
+- flash.each do |name, msg|
+  %p{class: ["alert", name]}
+    = msg
+
 %table
   %thead
     %tr

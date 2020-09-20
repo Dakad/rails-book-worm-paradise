@@ -1,4 +1,8 @@
-%p#notice= notice
+= link_to '< Go to Authors', authors_path
+
+- flash.each do |name, msg|
+  %p{class: ["alert", name]}
+    = msg
 
 %p
   %b First name:

@@ -1,8 +1,29 @@
 = link_to "< Go to Books", books_path
-%br/
+
+- flash.each do |name, msg|
+  %p{class: ["alert", name]}
+    = msg
+
 %h2= @book.title
+
 %h3 By #{@book.author}
 %p
+  %b Country / Language:
+  = @book.country 
+  \/
+  = @book.language
+%p
+  %b Publish year:
+  = @book.year
+
+- if @book.pages.positive?  
+  %p
+    %b Pages:
+    = @book.pages
+
+%p
+  = link_to "< Go to Books", books_path
+  \|
   = link_to "Edit", edit_book_path(@book.id)
 
 
